@@ -117,10 +117,13 @@ def kramer_mizes(seq, F, alpha=.05):
 
     Inputs:
     - seq: Array
-    - F: Cummulative distribution function
-    - alpha:  
+    - F: Cummulative distribution function (a.k.a cdf)
+    - alpha: Level of significance
 
     Outputs:
+    - is_rejected: Boolean; True if rejected
+    - s: Value of statistic
+    - p: Value of probability
     """
     sort_seq = sorted(seq)
     n = len(sort_seq)
@@ -132,6 +135,7 @@ def kramer_mizes(seq, F, alpha=.05):
 
 def _getKramerStatistic_(seq, n, F):
     """
+    Calculate statistic for Kramer-Mizes criteria
     """
     S = 0.0
     for i in range(n):
@@ -141,6 +145,7 @@ def _getKramerStatistic_(seq, n, F):
 
 def _getKramerProbability_(stat):
     """
+    Calculate probability for Kramer-Mizes criteria
     """
     a1 = 0.0
     j = 0
